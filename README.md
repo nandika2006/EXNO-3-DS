@@ -31,7 +31,34 @@ We use this categorical data encoding technique when the features are nominal(do
 • Yeojohnson method
 
 # CODING AND OUTPUT:
-       # INCLUDE YOUR CODING AND OUTPUT SCREENSHOTS HERE
+    import pandas as pd
+    df=pd.read_csv("/content/Encoding Data.csv")
+    df
+  ![image](https://github.com/user-attachments/assets/be4f1128-6fd5-4199-8679-d4f5d5633acc)
+
+    from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
+    pm=['Hot','Warm','Cold']
+    e1=OrdinalEncoder(categories=[pm])
+    e1.fit_transform(df[["ord_2"]])
+![image](https://github.com/user-attachments/assets/9ba1a06b-52aa-417b-b1e1-dc25bbb21108)
+
+    df['bo2']=e1.fit_transform(df[["ord_2"]])
+    df
+![image](https://github.com/user-attachments/assets/3d0c6692-556a-4fbc-a7ce-5c09bbf10203)
+
+    le=LabelEncoder()
+    dfc=df.copy()
+    dfc['ord_2']=le.fit_transform(dfc['ord_2'])
+    dfc
+![image](https://github.com/user-attachments/assets/0f95dc61-2f09-4a54-9636-5460301cacf5)
+
+    from sklearn.preprocessing import OneHotEncoder
+    ohe=OneHotEncoder(sparse=False)
+    df2=df.copy()
+    enc=pd.DataFrame(ohe.fit_transform(df2[["nom_0"]]))
+
+
+
 # RESULT:
        # INCLUDE YOUR RESULT HERE
 
